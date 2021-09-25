@@ -228,7 +228,15 @@ int conditional(int x, int y, int z) {
  *   Rating: 3
  */
 int isLessOrEqual(int x, int y) {
-  return 2;
+    int min = 1 << 31;
+    int xor = x ^ y; // xor = x == y ? 0 : 1;
+    int flag = !(xor & min); // x 和 y 同号
+    int sub1 = x + ((~y) + 1); 
+    int sub2 = ((~x) + 1) + y;
+    int flag1 = !!(sub1 & min);
+    int flag2 = !(sub2 & min);
+    int flag3 = !(y & min); // y >= 0
+    return (!xor) | (flag & (flag1 | flag2)) | ((!flag) & flag3);
 }
 //4
 /* 

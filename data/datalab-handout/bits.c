@@ -216,7 +216,8 @@ int isAsciiDigit(int x) {
  */
 int conditional(int x, int y, int z) {
     x = !x;
-    
+    int t = (~x) + 1;
+    return (t & z) | ((~t) & y);
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 

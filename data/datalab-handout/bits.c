@@ -248,7 +248,7 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4 
  */
 int logicalNeg(int x) {
-  return 2;
+    return ((x | (~x + 1)) >> 31) + 1; // 有符号整数执行算术右移，若符号位为 1，就在左边补 1
 }
 /* howManyBits - return the minimum number of bits required to represent x in
  *             two's complement
